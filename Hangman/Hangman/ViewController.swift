@@ -30,7 +30,7 @@ class ViewController: UIViewController {
         userCorrectLetters = []
         userInputTextField.text = ""
         cohortInputTextField.text = ""
-        guessLabel.text = "User One, please enter a Word!"
+        guessLabel.text = "User One please enter a Word!"
         wordLabel.text = ""
         imageSwitch()
     }
