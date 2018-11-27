@@ -64,13 +64,13 @@ extension ViewController: UITextFieldDelegate {
         while guessCount > 0{
             if let userInput = cohortInputTextField.text?.uppercased(){
                 guard alphabet.contains(userInput)  else {
-                    guessLabel.text = "That's not a valid letter! Please choose a letter."
-                    continue
+                    guessLabel.text = "That's not a valid letter!"
+                    return true
                 }
                 
                 guard !storedUserInput.contains(userInput) else {
-                    guessLabel.text = "Uh oh. Looks like you used this letter already. Try again!"
-                    continue
+                    guessLabel.text = "Used the letter \(userInput) already."
+                    return true
                 }
                 
                 storedUserInput.append(userInput)
@@ -83,16 +83,17 @@ extension ViewController: UITextFieldDelegate {
                         }
                     }
                     
-                    guessLabel.text = "Correct Choice, you still have \(guessCount) chances left!"
+                    guessLabel.text = "You still have \(guessCount) chances left!"
                 } else {
                     
                     guessCount -= 1
                     imageSwitch()
-                    guessLabel.text = "Incorrect selection! You have \(guessCount) chances left!"
+                    guessLabel.text = "You have \(guessCount) chances left!"
                 }
             }
             if !userCorrectLetters.contains("_") {
                 wordLabel.text = "You Win"
+                
                 
             }
             if guessCount == 0  {
