@@ -14,7 +14,6 @@ class ViewController: UIViewController {
     var alphabet = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
     var guessCount = 6
     var storedUserInput = [String]()
-    var placeHolder = String()
     var userCorrectLetters: [String] = []
     @IBOutlet weak var cohortInputTextField: UITextField!
     @IBOutlet weak var userInputTextField: UITextField!
@@ -24,6 +23,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var wordLabel: UILabel!
     
     @IBOutlet weak var hangManImage: UIImageView!
+    
+    @IBAction func newGame(_ sender: UIButton) {
+        guessCount = 6
+        storedUserInput = [String]()
+        userCorrectLetters = []
+        userInputTextField.text = ""
+        cohortInputTextField.text = ""
+        guessLabel.text = "User One, please enter a Word!"
+        wordLabel.text = ""
+        imageSwitch()
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         userInputTextField.delegate = self
@@ -61,52 +71,51 @@ extension ViewController: UITextFieldDelegate {
         
         imageSwitch()
         if cohortInputTextField.text != "" {
-        while guessCount > 0{
-            if let userInput = cohortInputTextField.text?.uppercased(){
-                guard alphabet.contains(userInput)  else {
-                    guessLabel.text = "That's not a valid letter!"
-                    return true
-                }
-                
-                guard !storedUserInput.contains(userInput) else {
-                    guessLabel.text = "Used the letter \(userInput) already."
-                    return true
-                }
-                
-                storedUserInput.append(userInput)
-                
-                if userInputTextField.text!.contains(userInput){
-                    for (index, char) in userInputTextField.text!.enumerated() {
-                        if String(char) == userInput {
-                            userCorrectLetters[index] = userInput
-                            wordLabel.text = userCorrectLetters.joined(separator: " ")
-                        }
+            while guessCount > 0{
+                if let playerTwoInput = cohortInputTextField.text?.uppercased(){
+                    guard alphabet.contains(playerTwoInput)  else {
+                        guessLabel.text = "That's not a valid letter!"
+                        return true
                     }
                     
-                    guessLabel.text = "You still have \(guessCount) chances left!"
-                } else {
+                    guard !storedUserInput.contains(playerTwoInput) else {
+                        guessLabel.text = "Used the letter \(playerTwoInput) already."
+                        return true
+                    }
                     
-                    guessCount -= 1
-                    imageSwitch()
-                    guessLabel.text = "You have \(guessCount) chances left!"
+                    storedUserInput.append(playerTwoInput)
+                    
+                    if userInputTextField.text!.contains(playerTwoInput){
+                        for (index, char) in userInputTextField.text!.enumerated() {
+                            if String(char) == playerTwoInput {
+                                userCorrectLetters[index] = playerTwoInput
+                                wordLabel.text = userCorrectLetters.joined(separator: " ")
+                            }
+                        }
+                        
+                        guessLabel.text = "You still have \(guessCount) chances left!"
+                    } else {
+                        
+                        guessCount -= 1
+                        imageSwitch()
+                        guessLabel.text = "You have \(guessCount) chances left!"
+                    }
                 }
+                if !userCorrectLetters.contains("_") {
+                    wordLabel.text = "You Win. Word: \(userInputTextField.text!)"
+                    
+                }
+                if guessCount == 0  {
+                    wordLabel.text = "You Lose. Word: \(userInputTextField.text!)"
+                }
+                return true
             }
-            if !userCorrectLetters.contains("_") {
-                wordLabel.text = "You Win"
-                
-                
-            }
-            if guessCount == 0  {
-                wordLabel.text = "You Lose"
-            }
-            return true
-        }
         }
         if userInputTextField.text != nil {
             userCorrectLetters = Array(repeating: "_", count: Int(userInputTextField.text!.count))
             guessLabel.text = "You have \(guessCount) guesses left"
             for letter in userInputTextField.text! {
-                if storedUserInput.contains(String(letter))/* as? UIFocusEnvironment) */{
+                if storedUserInput.contains(String(letter)){
                     wordLabel.text = "\(letter, terminator: " ")"
                 } else {
                     wordLabel.text = userCorrectLetters.joined(separator: " ")
@@ -114,8 +123,6 @@ extension ViewController: UITextFieldDelegate {
                 userInputTextField.text = userInputTextField.text?.uppercased()
                 return true
             }
-            
-
             
         }
         return true
