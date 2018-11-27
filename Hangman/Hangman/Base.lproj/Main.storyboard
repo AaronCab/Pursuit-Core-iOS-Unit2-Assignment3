@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="EPi-rB-zZF">
     <device id="retina6_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -31,9 +31,8 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="User One please enter a Word!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaD-E2-aks">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User One please enter a Word!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WaD-E2-aks">
                                 <rect key="frame" x="88" y="271" width="235" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -53,16 +52,20 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Nh0-pw-K0x" secondAttribute="bottom" constant="487" id="03A-IP-fRN"/>
-                            <constraint firstItem="uYw-Qn-L20" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="142" id="9lk-8h-IjP"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="uYw-Qn-L20" secondAttribute="trailing" constant="62" id="AsD-jw-BD3"/>
                             <constraint firstItem="Nh0-pw-K0x" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="159" id="KVm-O3-SIP"/>
+                            <constraint firstItem="Nh0-pw-K0x" firstAttribute="top" secondItem="WaD-E2-aks" secondAttribute="bottom" constant="53" id="gOy-HG-7TM"/>
+                            <constraint firstItem="WaD-E2-aks" firstAttribute="top" secondItem="uYw-Qn-L20" secondAttribute="bottom" constant="55" id="gaS-WY-KoV"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Nh0-pw-K0x" secondAttribute="trailing" constant="159" id="hFB-db-LeK"/>
+                            <constraint firstItem="WaD-E2-aks" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="88" id="j8S-cA-dhU"/>
                             <constraint firstItem="Nh0-pw-K0x" firstAttribute="top" secondItem="uYw-Qn-L20" secondAttribute="bottom" constant="129" id="kic-PH-CDp"/>
                             <constraint firstItem="uYw-Qn-L20" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="62" id="oba-du-TgQ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WaD-E2-aks" secondAttribute="trailing" constant="91" id="syU-hK-3p6"/>
                             <constraint firstItem="Nh0-pw-K0x" firstAttribute="top" secondItem="uYw-Qn-L20" secondAttribute="bottom" constant="129" id="vIJ-Dc-2nd"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="LZG-Ge-ZJg"/>
                     <connections>
                         <outlet property="cohortInputTextField" destination="Nh0-pw-K0x" id="SOA-E8-8P3"/>
                         <outlet property="guessLabel" destination="WaD-E2-aks" id="QHt-r3-HKf"/>
@@ -72,6 +75,24 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1046.376811594203" y="132.58928571428572"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Ljc-dn-fKx">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EPi-rB-zZF" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Ysn-4l-jaj">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="DNR-NG-A0S"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tTN-eN-h8z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="132.58928571428572"/>
         </scene>
